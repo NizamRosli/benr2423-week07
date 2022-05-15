@@ -5,7 +5,9 @@
 	},
 	"dependencies": {
 		"bcrypt": "^5.0.1",
-		"jest": "^27.5.1"
+		"bcryptjs": "^2.4.3",
+		"jest": "^27.5.1",
+		"save-dev": "^0.0.1-security"
 	},
 	"devDependencies": {
 		"@shelf/jest-mongodb": "^2.2.1"
