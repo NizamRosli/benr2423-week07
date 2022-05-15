@@ -7,7 +7,8 @@ class User {
 	static async register(username, password) {
 		// TODO: Check if username exists
 		let res = await users.findOne({'username':username});
-			//console.log(username)
+			console.log(username)
+			console.log(res);
 			if (res == null){
 				// TODO: Hash password
 				const bcrypt = require("bcryptjs")
@@ -27,18 +28,18 @@ class User {
 									"HashedPassword": hash});
 							}
 							console.log("Inserted!!!")
-							//return 1;
+							return 1;
 
 						})
-						return 1;
+					
 					}
 				})
 			}
 			else{
 				console.log("Please choose other username!")
-				//return 0;
+				return 0;
 			} return 0;
-			//return 1;
+			
 		 }
 		
 		
@@ -63,8 +64,7 @@ class User {
                 }
                 else{
                     console.log("Login failed!")
-					return 0;
-                }
+                }return 0;
             });
 			}
 

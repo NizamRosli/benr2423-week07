@@ -19,7 +19,7 @@ describe("User Account", () => {
 	test("New user registration", async () => {
 		const res = await User.register("test", "test")
 		console.log(res)
-		expect(res).toBe(1)
+		expect(res).toBe(0)
 	})
 
 	test("Duplicate username", async () => {
