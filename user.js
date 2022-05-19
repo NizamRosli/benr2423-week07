@@ -6,9 +6,9 @@ class User {
 
 	static async register(username, password) {
 		// TODO: Check if username exists
-		let res = await users.findOne({'username':username});
-			console.log(username)
-			console.log(res);
+		let res = await users.findOne({'userName':username});
+			//console.log(username)
+			//console.log(res);
 			if (res == null){
 				// TODO: Hash password
 				const bcrypt = require("bcryptjs")
@@ -28,17 +28,17 @@ class User {
 									"HashedPassword": hash});
 							}
 							console.log("Inserted!!!")
-							return 1;
+							
 
 						})
 					
 					}
-				})
+				}); return 1;
 			}
 			else{
 				console.log("Please choose other username!")
 				return 0;
-			} return 0;
+			}
 			
 		 }
 		
@@ -46,7 +46,7 @@ class User {
 
 	static async login(username, password) {
 		// TODO: Check if username exists
-		let result = await users.findOne({'username':username});
+		let result = await users.findOne({'userName':username});
 			//console.log(result)
 			//console.log(result[0].Password)
 			if (result == null){
@@ -55,17 +55,18 @@ class User {
 			else{
 			// TODO: Validate password
 			const bcrypt = require("bcryptjs")
-            bcrypt.compare(password, result.HashedPassword).then(function(result) {
+            let com = await bcrypt.compare(password, result.HashedPassword)
                 //result == true
                 //console.log(result);
-                if (result == true){
+                if (com == true){
                     console.log("Login Successfully!")
 					return 1;
                 }
                 else{
                     console.log("Login failed!")
-                }return 0;
-            });
+					return 0;
+                }
+            
 			}
 
 		// TODO: Return user object

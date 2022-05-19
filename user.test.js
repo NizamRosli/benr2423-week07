@@ -17,9 +17,9 @@ describe("User Account", () => {
 	})
 
 	test("New user registration", async () => {
-		const res = await User.register("test", "test")
+		const res = await User.register("diam", "test")
 		console.log(res)
-		expect(res).toBe(0)
+		expect(res).toBe(1)
 	})
 
 	test("Duplicate username", async () => {
@@ -29,20 +29,20 @@ describe("User Account", () => {
 	})
 
 	test("User login invalid username", async () => {
-		const res = await User.login("test1", "test1")
+		const res = await User.login("nizam11", "test1")
 		console.log(res)
 		expect(res).toBe(null)
 	})
 
 	test("User login invalid password", async () => {
-		const res = await User.login("nizam", "test12")
+		const res = await User.login("test", "test12")
 		console.log(res)
-		expect(res).toBe(null)
+		expect(res).toBe(0)
 	})
 
 	test("User login successfully", async () => {
-		const res = await User.login("nizam", "test123")
+		const res = await User.login("test", "test")
 		console.log(res)
-		expect(res).toBe(null)
+		expect(res).toBe(1)
 	})
 });
